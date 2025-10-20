@@ -1,15 +1,21 @@
 package com.gemora_server.controller;
 
-import com.gemora_server.dto.LoginRequestDto;
-import com.gemora_server.dto.LoginResponseDto;
-import com.gemora_server.dto.RegisterRequestDto;
-import com.gemora_server.dto.RegisterResponseDto;
-import com.gemora_server.service.AuthService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.gemora_server.dto.LoginRequestDto;
+import com.gemora_server.dto.LoginResponseDto;
+import com.gemora_server.dto.RegisterResponseDto;
+import com.gemora_server.service.AuthService;
+
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/auth")
