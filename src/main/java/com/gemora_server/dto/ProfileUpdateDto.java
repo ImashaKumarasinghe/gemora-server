@@ -15,7 +15,9 @@ import org.springframework.web.multipart.MultipartFile;
 //    - hashCode()
 // So you don’t need to write them manually.
 @Builder
-
+// 👉 Enables Builder Pattern.
+//    Helps create objects step by step in a clean way.
+//    Example: User.builder().name("Imasha").age(22).build();
 @NoArgsConstructor
 @AllArgsConstructor
 
