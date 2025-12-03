@@ -18,7 +18,11 @@ import org.springframework.web.multipart.MultipartFile;
 // 👉 Enables Builder Pattern.
 //    Helps create objects step by step in a clean way.
 //    Example: User.builder().name("Imasha").age(22).build();
+
 @NoArgsConstructor
+// 👉 Creates an empty constructor.
+//    Example: User user = new User();
+
 @AllArgsConstructor
 
 public class ProfileUpdateDto {
