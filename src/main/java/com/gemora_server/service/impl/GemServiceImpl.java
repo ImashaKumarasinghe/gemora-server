@@ -21,7 +21,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import java.time.LocalDate;
-import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,6 +43,14 @@ public class GemServiceImpl implements GemService {
         User seller = userRepo.findById(sellerId)
                 .orElseThrow(() -> new RuntimeException("Seller not found"));
 
+        ListingType listingType =
+                request.getListingType() == null ? ListingType.SALE : request.getListingType();
+
+        LocalDateTime auctionEnd = null;
+        if (listingType == ListingType.AUCTION) {
+            auctionEnd = LocalDateTime.now().plusDays(7);
+        }
+
         Gem gem = Gem.builder()
                 .name(request.getName())
                 .description(request.getDescription())
@@ -56,6 +63,7 @@ public class GemServiceImpl implements GemService {
                 .status(GemStatus.PENDING)
                 .createdAt(LocalDateTime.now())
                 .updatedAt(LocalDateTime.now())
+                .auctionEndTime(auctionEnd)
                 .build();
 
         Gem savedGem = gemRepo.save(gem);
